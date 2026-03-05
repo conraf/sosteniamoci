@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>sostenIAmoci — Documenti di sostegno in metà tempo</title>
+<meta name="description" content="sostenIAmoci è il servizio creato da un insegnante di sostegno per aiutarti a produrre PEI, PDP e relazioni con l'intelligenza artificiale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-cream: #FFF8F0;
+  --soft-peach: #FFECD2;
+  --gentle-coral: #E8927C;
+  --deep-terracotta: #C75C3A;
+  --warm-brown: #5D3A2A;
+  --soft-sage: #A8C5A0;
+  --deep-sage: #6B9B6B;
+  --light-sage: #E8F0E6;
+  --text-primary: #3D2B1F;
+  --text-secondary: #6B5344;
+  --text-light: #8B7565;
+  --white: #FFFFFF;
+  --shadow-soft: 0 2px 20px rgba(93, 58, 42, 0.08);
+  --shadow-medium: 0 4px 30px rgba(93, 58, 42, 0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-primary);
+  background: var(--warm-cream);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', serif;
+  line-height: 1.3;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(93, 58, 42, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+nav.scrolled {
+  box-shadow: var(--shadow-soft);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--deep-terracotta);
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--deep-terracotta);
+}
+
+.nav-cta {
+  background: var(--deep-terracotta) !important;
+  color: var(--white) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--warm-brown) !important;
+  transform: translateY(-1px);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--warm-brown);
+  margin: 6px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(168, 197, 160, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 236, 210, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-logo {
+  max-width: 200px;
+  margin: 0 auto 12px;
+}
+
+.hero-logo img {
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--light-sage);
+  color: var(--deep-sage);
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--warm-brown);
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--deep-terracotta);
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deep-terracotta);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--warm-brown);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(199, 92, 58, 0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--deep-terracotta);
+  padding: 16px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: 2px solid var(--deep-terracotta);
+  transition: all 0.25s;
+}
+
+.btn-secondary:hover {
+  background: var(--deep-terracotta);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* ===== SECTIONS COMMON ===== */
+section {
+  padding: 100px 24px;
+}
+
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--deep-sage);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--warm-brown);
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 650px;
+  line-height: 1.8;
+}
+
+/* ===== PROBLEMA ===== */
+.problema {
+  background: var(--white);
+}
+
+.problema-text {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.problema-text p {
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.problema-text p:last-of-type {
+  margin-bottom: 0;
+}
+
+.problema-closing {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid var(--soft-peach);
+  text-align: center;
+}
+
+.problema-closing p {
+  font-family: 'Lora', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--deep-terracotta);
+  font-style: italic;
+}
+
+/* ===== SERVIZI ===== */
+.servizi {
+  background: var(--warm-cream);
+}
+
+.servizi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.servizio-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+  border: 1px solid rgba(93, 58, 42, 0.06);
+}
+
+.servizio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.servizio-card.featured {
+  border: 2px solid var(--deep-terracotta);
+}
+
+.servizio-card.featured::before {
+  content: 'Più scelto';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--deep-terracotta);
+  color: var(--white);
+  padding: 4px 16px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.servizio-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.servizio-icon.coral {
+  background: rgba(232, 146, 124, 0.15);
+}
+
+.servizio-icon.sage {
+  background: var(--light-sage);
+}
+
+.servizio-icon.peach {
+  background: var(--soft-peach);
+}
+
+.servizio-card h3 {
+  font-size: 1.25rem;
+  color: var(--warm-brown);
+  margin-bottom: 8px;
+}
+
+.servizio-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--deep-terracotta);
+  margin-bottom: 16px;
+}
+
+.servizio-price small {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.servizio-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.servizio-card .note {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.servizio-card .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+}
+
+.servizio-card .btn-secondary {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+}
+
+.servizio-sub {
+  margin-top: 12px;
+}
+
+.servizio-sub h4 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  margin-bottom: 4px;
+}
+
+.servizio-sub p {
+  font-size: 0.88rem !important;
+  margin-bottom: 12px !important;
+}
+
+/* ===== COME FUNZIONA ===== */
+.come-funziona {
+  background: var(--white);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(to right, var(--soft-peach), var(--soft-sage), var(--soft-peach));
+  z-index: 0;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-number {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-family: 'Lora', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--gentle-coral), var(--deep-terracotta));
+  box-shadow: 0 4px 20px rgba(199, 92, 58, 0.2);
+}
+
+.step h3 {
+  font-size: 1.15rem;
+  color: var(--warm-brown);
+  margin-bottom: 12px;
+}
+
+.step p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ===== UPLOAD ===== */
+.upload {
+  background: linear-gradient(170deg, var(--soft-peach) 0%, var(--warm-cream) 100%);
+}
+
+.upload-form {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  max-width: 680px;
+  margin: 40px auto 0;
+  box-shadow: var(--shadow-medium);
+}
+
+.form-intro {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--warm-brown);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid rgba(93, 58, 42, 0.12);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--warm-cream);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--deep-terracotta);
+  box-shadow: 0 0 0 3px rgba(199, 92, 58, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.file-upload-area {
+  border: 2px dashed rgba(93, 58, 42, 0.2);
+  border-radius: 12px;
+  padding: 40px 24px;
+  text-align: center;
+  background: var(--warm-cream);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.file-upload-area:hover {
+  border-color: var(--deep-terracotta);
+  background: rgba(255, 236, 210, 0.4);
+}
+
+.file-upload-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.file-upload-area p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.file-upload-area small {
+  color: var(--text-light);
+  font-size: 0.82rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--deep-terracotta);
+  flex-shrink: 0;
+}
+
+.checkbox-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.05rem;
+}
+
+/* ===== TESTIMONIANZE ===== */
+.testimonianze {
+  background: var(--white);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.testimonial-card {
+  background: var(--warm-cream);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  position: relative;
+}
+
+.testimonial-quote {
+  font-size: 2.5rem;
+  color: var(--soft-sage);
+  font-family: 'Lora', serif;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.testimonial-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.testimonial-author {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+}
+
+.testimonial-role {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* ===== FAQ ===== */
+.faq {
+  background: var(--warm-cream);
+}
+
+.faq-list {
+  max-width: 720px;
+  margin: 48px auto 0;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  border: 1px solid rgba(93, 58, 42, 0.06);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 22px 28px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.faq-question:hover {
+  color: var(--deep-terracotta);
+}
+
+.faq-chevron {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+  color: var(--gentle-coral);
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 400px;
+}
+
+.faq-answer-inner {
+  padding: 0 28px 22px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* ===== CHI SONO ===== */
+.chi-sono {
+  background: var(--white);
+}
+
+.chi-sono-content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.chi-sono-photo {
+  width: 280px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.chi-sono-text p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+/* ===== CONTATTI ===== */
+.contatti {
+  background: linear-gradient(170deg, var(--warm-brown) 0%, #4A2D1E 100%);
+  color: var(--white);
+  text-align: center;
+}
+
+.contatti .section-tag {
+  color: var(--soft-sage);
+}
+
+.contatti .section-title {
+  color: var(--white);
+}
+
+.contatti-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  max-width: 550px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+
+.contatti-methods {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.contatti-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.contatti-method:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.contatti-method span.icon {
+  font-size: 1.3rem;
+}
+
+.contatti .btn-primary {
+  background: var(--gentle-coral);
+  font-size: 1.1rem;
+  padding: 18px 40px;
+}
+
+.contatti .btn-primary:hover {
+  background: var(--deep-terracotta);
+}
+
+.contatti-divider {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 28px 0;
+  font-size: 0.95rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #3A2015;
+  text-align: center;
+  padding: 28px 24px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .servizi-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .steps {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .steps::before {
+    display: none;
+  }
+  
+  .chi-sono-content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  
+  .chi-sono-photo {
+    width: 180px;
+    height: 210px;
+  }
+  
+  .contatti-methods {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--warm-cream);
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 16px;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .nav-links.open {
+    display: flex;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  section {
+    padding: 60px 16px;
+  }
+  
+  .hero {
+    padding: 90px 16px 50px;
+    min-height: auto;
+  }
+  
+  .hero-logo {
+    max-width: 150px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-sub {
+    font-size: 1rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .problema-closing p {
+    font-size: 1.15rem;
+  }
+  
+  .upload-form {
+    padding: 24px 16px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .file-upload-area {
+    padding: 28px 16px;
+  }
+  
+  .faq-question {
+    padding: 18px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .faq-answer-inner {
+    padding: 0 16px 18px;
+  }
+  
+  .servizio-card {
+    padding: 28px 20px;
+  }
+  
+  .testimonial-card {
+    padding: 24px 20px;
+  }
+  
+  .step p {
+    max-width: 100%;
+  }
+  
+  .contatti-method {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ===== THANK YOU ===== */
+.thank-you {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.thank-you-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.thank-you h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  color: var(--warm-brown);
+  margin-bottom: 12px;
+}
+
+.thank-you p {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.animate-in:nth-child(2) { animation-delay: 0.1s; }
+.animate-in:nth-child(3) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">sosten<span>IA</span>moci</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#come-funziona">Come funziona</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#chi-sono">Chi sono</a></li>
+      <li><a href="#upload" class="nav-cta">Richiedi un documento</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <!-- LOGO -->
+    <div class="hero-logo">
+      <img src="logo.png" alt="Logo sostenIAmoci" />
+    </div>
+    
+    <div class="hero-badge">Creato da un insegnante di sostegno</div>
+    <h1>I tuoi documenti di sostegno,<br><em>in metà tempo.</em></h1>
+    <p class="hero-sub">
+      sosten<strong>IA</strong>moci è il servizio creato da un insegnante di sostegno per aiutarti a produrre PEI, PDP e relazioni con l'intelligenza artificiale — senza perdere il tuo sguardo educativo.
+    </p>
+    <div class="hero-buttons">
+      <a href="#upload" class="btn-primary">✉️ Richiedi un documento</a>
+      <a href="#come-funziona" class="btn-secondary">Scopri come funziona</a>
+    </div>
+  </div>
+</section>
+
+<!-- IL PROBLEMA -->
+<section class="problema" id="problema">
+  <div class="section-inner">
+    <div class="problema-text">
+      <span class="section-tag">Il problema</span>
+      <h2 class="section-title">Lo sai anche tu com'è.</h2>
+      
+      <p>Apri la diagnosi funzionale e ti sembra scritta in un'altra lingua. Cerchi di ricavarne qualcosa di utile per il PEI, ma tra codici ICF e formule cliniche, il collegamento con il bambino che hai in classe ogni mattina sembra lontanissimo.</p>
+      
+      <p>Poi inizia la compilazione. Dimensione dopo dimensione, area dopo area: punti di forza, punti di debolezza, obiettivi a breve e lungo termine. E a un certo punto ti ritrovi a cercare il quinto sinonimo di "presenta difficoltà nell'area della comunicazione" perché non puoi scrivere la stessa frase tre volte nella stessa pagina.</p>
+      
+      <p>Il documento cresce, ma la distanza tra quello che scrivi e quello che succede davvero in classe cresce ancora di più. Il burocratese prende il sopravvento.</p>
+      
+      <p>Poi arrivano le verifiche intermedie. I progressi attesi che non si sono realizzati — e che in qualche modo vanno raccontati senza far sembrare che nulla abbia funzionato. Gli obiettivi che dovevano essere "misurabili e verificabili", e che per misurarli davvero ti servirebbe un contabile seduto in classe accanto a te.</p>
+      
+      <p>E tutto questo tempo — le sere, i weekend — è tempo che togli alla cosa per cui sei diventato insegnante di sostegno: stare con i tuoi alunni e fare la differenza.</p>
+      
+      <div class="problema-closing">
+        <p>sostenIAmoci nasce per restituirti quel tempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section class="servizi" id="servizi">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <span class="section-tag">I servizi</span>
+      <h2 class="section-title">Scegli come vuoi lavorare</h2>
+    </div>
+    
+    <div class="servizi-grid">
+      <!-- Servizio 1 -->
+      <div class="servizio-card featured">
+        <div class="servizio-icon coral">📄</div>
+        <h3>Te lo preparo io</h3>
+        <div class="servizio-price">12€ <small>a documento</small></div>
+        <p>Mi mandi i tuoi appunti grezzi — anche disordinati — e ti restituisco un PEI o PDP completo, ben scritto e pronto per la revisione. Tu ci metti il contenuto educativo, io ci metto lo strumento. Il documento è tuo: lo rileggi, lo aggiusti dove serve, lo firmi.</p>
+        <a href="#upload" class="btn-primary">Richiedi un documento</a>
+      </div>
+      
+      <!-- Servizio 2 -->
+      <div class="servizio-card">
+        <div class="servizio-icon sage">🧰</div>
+        <h3>Fai da te, con lo strumento giusto</h3>
+        <div class="servizio-price">39€ <small>una tantum</small></div>
+        <p>Un kit completo per produrre in autonomia i tuoi documenti di sostegno usando l'intelligenza artificiale. Include la video-guida passo passo, la skill preconfigurata per Claude e i template pronti per PEI e PDP. Impari una volta, lo usi per tutto l'anno scolastico.</p>
+        <p class="note">Richiede un abbonamento a Claude Pro (~20€/mese), non incluso.</p>
+        <a href="#contatti" class="btn-secondary">Scopri cosa include</a>
+      </div>
+      
+      <!-- Servizio 3 -->
+      <div class="servizio-card">
+        <div class="servizio-icon peach">🤝</div>
+        <h3>Lavoriamoci insieme</h3>
+        <div class="servizio-price">da 80€ <small>a pacchetto</small></div>
+        <p>Se preferisci un accompagnamento personalizzato, posso affiancarti online o in presenza.</p>
+        <div class="servizio-sub">
+          <h4>Pacchetto Avvio — 80€</h4>
+          <p>2 sessioni da 45 min: configuriamo tutto insieme e produciamo il tuo primo documento fianco a fianco.</p>
+          <h4>Pacchetto Annuale — 150€</h4>
+          <p>4 sessioni nell'arco dell'anno: ti supporto nei momenti chiave.</p>
+          <h4>Workshop per piccoli gruppi</h4>
+          <p>Mezza giornata in presenza. Prezzo su richiesta.</p>
+        </div>
+        <a href="#contatti" class="btn-secondary">Prenota una sessione</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="come-funziona" id="come-funziona">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <span class="section-tag">Il processo</span>
+      <h2 class="section-title">Tre passi, nessun mal di testa</h2>
+    </div>
+    
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Raccogli i tuoi appunti</h3>
+        <p>Gli appunti che già hai: osservazioni di classe, annotazioni dalla diagnosi, note dal GLO. Non devono essere perfetti — devono essere tuoi. Ricordati solo di usare le iniziali dell'alunno, mai il nome completo.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Scrivimi</h3>
+        <p>Compila il modulo sul sito per dirmi di cosa hai bisogno. Ti ricontatto via email per organizzare lo scambio dei materiali in modo semplice e sicuro.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Ricevi il documento pronto</h3>
+        <p>Entro 48 ore ti restituisco il documento completo via email. Lo rileggi, lo fai tuo con le modifiche che vuoi, e lo porti al GLO. Il giudizio educativo resta sempre il tuo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RICHIEDI UN DOCUMENTO -->
+<section class="upload" id="upload">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <span class="section-tag">Inizia ora</span>
+      <h2 class="section-title">Richiedi un documento</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Dimmi di cosa hai bisogno e ti ricontatto via email entro 24 ore per organizzare lo scambio dei materiali. Accetto qualsiasi formato: file Word, PDF, immagini, anche note vocali trascritte. L'importante è che il contenuto sia anonimizzato: solo le iniziali dell'alunno.
+      </p>
+    </div>
+    
+    <div class="upload-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Il tuo nome</label>
+          <input type="text" id="nome" placeholder="Nome e cognome" required>
+        </div>
+        <div class="form-group">
+          <label for="email">La tua email</label>
+          <input type="email" id="email" placeholder="nome@email.it" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tipo-doc">Tipo di documento</label>
+          <select id="tipo-doc" required>
+            <option value="" disabled selected>Scegli...</option>
+            <option value="PEI">PEI</option>
+            <option value="PDP">PDP</option>
+            <option value="Verifica intermedia">Verifica intermedia</option>
+            <option value="Relazione finale">Relazione finale</option>
+            <option value="Altro">Altro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="classe">Classe e ordine di scuola</label>
+          <input type="text" id="classe" placeholder="Es. 3ª primaria" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="note">Note aggiuntive</label>
+        <textarea id="note" placeholder="Es. È la verifica intermedia, l'alunno ha una diagnosi di..., vorrei che il tono fosse..."></textarea>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="privacy-policy" required>
+        <label for="privacy-policy">Ho letto e accetto la <a href="privacy.html" target="_blank" style="color: var(--deep-terracotta);">Privacy Policy</a> e i <a href="termini.html" target="_blank" style="color: var(--deep-terracotta);">Termini di Servizio</a>.</label>
+      </div>
+      
+      <button type="button" class="btn-primary form-submit" id="submitBtn" onclick="handleSubmit()">✉️ Invia la richiesta</button>
+      
+      <p style="text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--text-light);">
+        Si aprirà il tuo client di posta con un'email precompilata. Ti ricontatterò io per organizzare l'invio dei materiali.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIANZE -->
+<section class="testimonianze" id="testimonianze">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <span class="section-tag">Feedback</span>
+      <h2 class="section-title">Cosa dicono i colleghi</h2>
+    </div>
+    
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p>Ho mandato i miei appunti alle 9 di sera pensando "vediamo che succede". Due giorni dopo avevo un PEI che sembrava scritto da me — solo molto meglio organizzato. Ho corretto due cose e l'ho portato al GLO così com'era.</p>
+        <div class="testimonial-author">M.R.</div>
+        <div class="testimonial-role">Insegnante di sostegno, scuola primaria</div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p>La parte che mi ha colpito di più è che il documento non aveva quel tono freddo da modulo compilato. Si capiva che dietro c'era qualcuno che sa cosa vuol dire stare in classe con un bambino con bisogni complessi.</p>
+        <div class="testimonial-author">A.D.</div>
+        <div class="testimonial-role">Insegnante di sostegno, scuola primaria</div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p>Ho comprato il kit perché volevo capire come funzionava. All'inizio ero scettica sull'IA, ma dopo il primo PDP ho capito che non scrive al posto mio — mi fa risparmiare tutta la fatica della stesura.</p>
+        <div class="testimonial-author">S.L.</div>
+        <div class="testimonial-role">Insegnante di sostegno, scuola primaria</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <span class="section-tag">Domande frequenti</span>
+      <h2 class="section-title">Domande frequenti</h2>
+    </div>
+    
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Ma l'IA scrive il PEI al posto mio?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            No. L'intelligenza artificiale ti aiuta nella stesura: struttura il documento, trova le formulazioni giuste, organizza le informazioni. Ma il contenuto educativo — le osservazioni, le scelte didattiche, la conoscenza dell'alunno — quello lo metti tu. Il documento finale lo rileggi e lo modifichi prima di firmarlo. Lo strumento fa il lavoro pesante della scrittura, tu fai il lavoro importante del pensiero educativo.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          I dati del mio alunno sono al sicuro?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            I documenti che mi invii devono essere anonimizzati: solo iniziali, nessun nome completo, nessun codice fiscale o dato identificativo. Questo protegge la privacy dell'alunno e rispetta la normativa. I file che ricevo li uso esclusivamente per produrre il documento richiesto e non li conservo.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Devo essere bravo con la tecnologia?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Per il servizio "Te lo preparo io" no — devi solo saper caricare un file. Per il kit self-service serve un minimo di dimestichezza con il computer, ma la video-guida ti accompagna passo passo. Se ti blocchi, puoi sempre prenotare una sessione di consulenza.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quanto tempo ci vuole per ricevere il documento?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Entro 48 ore dal caricamento dei tuoi appunti. Nei periodi di picco (inizio anno, verifiche intermedie, fine anno) potrebbe volerci qualcosa in più — ti avviso sempre prima.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Posso usare il servizio anche per le relazioni di fine anno?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Sì. Il servizio copre PEI, PDP, verifiche intermedie e relazioni finali. Se hai bisogno di un tipo di documento diverso, scrivimi e vediamo insieme.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quanto costa Claude Pro? È obbligatorio?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Claude Pro è necessario solo se scegli il kit self-service. Costa circa 20€ al mese e puoi disdire quando vuoi. Per il servizio "Te lo preparo io" non ti serve nessun abbonamento — l'IA la uso io.
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Posso vedere un esempio di documento prodotto?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Scrivimi e ti mando un esempio anonimizzato di PEI e di PDP, così puoi valutare la qualità prima di decidere.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHI SONO -->
+<section class="chi-sono" id="chi-sono">
+  <div class="section-inner">
+    <span class="section-tag">La persona</span>
+    <h2 class="section-title">Chi c'è dietro sosten<span style="color: var(--deep-terracotta);">IA</span>moci</h2>
+    
+    <div class="chi-sono-content">
+      <div class="chi-sono-photo">
+        <img src="chi-sono.jpg" alt="Insegnante di sostegno in classe con un alunno" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);">
+      </div>
+      <div class="chi-sono-text">
+        <p>Sono un insegnante di sostegno alla scuola primaria. Ogni giorno lavoro con bambini con bisogni educativi complessi, e ogni anno affronto la stessa montagna di documentazione che conosci anche tu.</p>
+        <p>Ho anche una seconda vita professionale: mi occupo di consulenza informatica. E a un certo punto ho pensato: se l'intelligenza artificiale può aiutarmi a scrivere codice, perché non può aiutarmi a scrivere un PEI?</p>
+        <p>Così ho iniziato a sperimentare. Ho costruito uno strumento che capisce il linguaggio della documentazione scolastica, che sa cos'è un profilo di funzionamento e cosa ci si aspetta da una verifica intermedia. L'ho usato prima per me stesso, poi l'ho fatto provare ai colleghi.</p>
+        <p>sostenIAmoci è nato così: non da un'azienda tech, ma da un banco di scuola. Da qualcuno che sa cosa vuol dire cercare il quinto sinonimo di "presenta difficoltà" alle dieci di sera.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section class="contatti" id="contatti">
+  <div class="section-inner">
+    <span class="section-tag">Contatti</span>
+    <h2 class="section-title">Hai domande? Parliamone.</h2>
+    <p class="contatti-text">
+      Se vuoi saperne di più, hai un dubbio, o vuoi semplicemente capire se sostenIAmoci fa al caso tuo — scrivimi. Rispondo personalmente a tutti i messaggi.
+    </p>
+    
+    <div class="contatti-methods">
+      <a href="#" class="contatti-method" id="emailLink" onclick="return false;">
+        <span class="icon">✉️</span> <span id="emailText">caricamento...</span>
+      </a>
+    </div>
+    
+    <p class="contatti-divider">Oppure, se sei già convinto:</p>
+    
+    <a href="#upload" class="btn-primary">✉️ Richiedi un documento</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 sostenIAmoci — Tutti i diritti riservati · <a href="privacy.html">Privacy Policy</a> · <a href="termini.html">Termini di Servizio</a></p>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.getElementById('mobileToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// FAQ accordion
+function toggleFaq(button) {
+  var item = button.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el) {
+    el.classList.remove('open');
+  });
+  if (!wasOpen) {
+    item.classList.add('open');
+  }
+}
+
+// ===== EMAIL OBFUSCATION =====
+function demail() {
+  var p = ['sosteniamoci', 'ia'];
+  var d = ['gmail', 'com'];
+  return p.join('.') + '@' + d.join('.');
+}
+
+// Render email in contacts section
+(function() {
+  var addr = demail();
+  var el = document.getElementById('emailText');
+  var link = document.getElementById('emailLink');
+  if (el) el.textContent = addr;
+  if (link) {
+    link.href = 'mailto:' + addr;
+    link.onclick = null;
+  }
+})();
+
+// ===== FORM SUBMISSION VIA MAILTO =====
+function handleSubmit() {
+  var nome = document.getElementById('nome').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var tipoDoc = document.getElementById('tipo-doc').value;
+  var classe = document.getElementById('classe').value.trim();
+  var note = document.getElementById('note').value.trim();
+  var privacyPolicy = document.getElementById('privacy-policy').checked;
+  
+  // Validazione
+  if (!nome) { alert('Inserisci il tuo nome.'); return; }
+  if (!email) { alert('Inserisci la tua email.'); return; }
+  if (!tipoDoc) { alert('Scegli il tipo di documento.'); return; }
+  if (!classe) { alert('Inserisci la classe e l\'ordine di scuola.'); return; }
+  if (!privacyPolicy) { alert('Per procedere, accetta la Privacy Policy e i Termini di Servizio.'); return; }
+  
+  var destinatario = demail();
+  var oggetto = encodeURIComponent('Richiesta documento ' + tipoDoc + ' — sostenIAmoci');
+  var corpo = encodeURIComponent(
+    'Ciao,\n\n' +
+    'vorrei richiedere la preparazione di un documento.\n\n' +
+    'Nome: ' + nome + '\n' +
+    'Email: ' + email + '\n' +
+    'Tipo di documento: ' + tipoDoc + '\n' +
+    'Classe: ' + classe + '\n' +
+    (note ? 'Note: ' + note + '\n' : '') +
+    '\nHo accettato la Privacy Policy e i Termini di Servizio.\n' +
+    '\nResto in attesa di indicazioni per l\'invio dei materiali.\n' +
+    '\nGrazie!'
+  );
+  
+  window.location.href = 'mailto:' + destinatario + '?subject=' + oggetto + '&body=' + corpo;
+}
+</script>
+
+</body>
+</html>
