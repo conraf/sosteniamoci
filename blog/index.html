@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — sostenIAmoci</title>
+<meta name="description" content="Risorse pratiche per insegnanti di sostegno: guide, consigli e strumenti per la documentazione scolastica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-cream: #FFF8F0;
+  --soft-peach: #FFECD2;
+  --gentle-coral: #E8927C;
+  --deep-terracotta: #C75C3A;
+  --warm-brown: #5D3A2A;
+  --soft-sage: #A8C5A0;
+  --deep-sage: #6B9B6B;
+  --light-sage: #E8F0E6;
+  --text-primary: #3D2B1F;
+  --text-secondary: #6B5344;
+  --text-light: #8B7565;
+  --white: #FFFFFF;
+  --shadow-soft: 0 2px 20px rgba(93, 58, 42, 0.08);
+  --shadow-medium: 0 4px 30px rgba(93, 58, 42, 0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-primary);
+  background: var(--warm-cream);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', serif;
+  line-height: 1.3;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 24px;
+  background: rgba(255, 248, 240, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+}
+
+.nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Lora', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  text-decoration: none;
+}
+
+.logo span { color: var(--deep-terracotta); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--deep-terracotta); }
+
+.nav-cta {
+  background: var(--deep-terracotta) !important;
+  color: var(--white) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 120px 24px 60px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--warm-brown);
+  margin-bottom: 16px;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ===== POST LIST ===== */
+.post-list {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.post-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(93, 58, 42, 0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.post-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--deep-sage);
+  margin-bottom: 10px;
+}
+
+.post-card h2 {
+  font-size: 1.35rem;
+  color: var(--warm-brown);
+  margin-bottom: 12px;
+}
+
+.post-card h2:hover { color: var(--deep-terracotta); }
+
+.post-excerpt {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.read-more {
+  color: var(--deep-terracotta);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+/* ===== CONTATTI ===== */
+.contatti {
+  background: linear-gradient(170deg, var(--warm-brown) 0%, #4A2D1E 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 100px 24px;
+}
+
+.contatti .section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--soft-sage);
+  margin-bottom: 12px;
+}
+
+.contatti .section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.contatti-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  max-width: 550px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+
+.contatti-methods {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.contatti-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.contatti-method:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.contatti-method span.icon {
+  font-size: 1.3rem;
+}
+
+.contatti .btn-primary {
+  background: var(--gentle-coral);
+  font-size: 1.1rem;
+  padding: 18px 40px;
+}
+
+.contatti .btn-primary:hover {
+  background: var(--deep-terracotta);
+}
+
+.contatti-divider {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 28px 0;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deep-terracotta);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover {
+  background: var(--warm-brown);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(199, 92, 58, 0.25);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #3A2015;
+  text-align: center;
+  padding: 28px 24px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .page-header { padding: 100px 16px 40px; }
+  .post-list { padding: 0 16px 60px; }
+  .post-card { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">sosten<span>IA</span>moci</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#servizi">Servizi</a></li>
+      <li><a href="../index.html#come-funziona">Come funziona</a></li>
+      <li><a href="index.html">Blog</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+      <li><a href="../index.html#chi-sono">Chi sono</a></li>
+      <li><a href="../index.html#upload" class="nav-cta">Richiedi un documento</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-header">
+  <h1>Blog</h1>
+  <p>Risorse pratiche per insegnanti di sostegno. Guide, consigli e strumenti per affrontare la documentazione scolastica con meno fatica e più consapevolezza.</p>
+</section>
+
+<div class="post-list">
+
+  <article class="post-card">
+    <a href="revisione-intermedia-pei.html">
+      <div class="post-date">6 Marzo 2026</div>
+      <h2>Revisione intermedia del PEI: come affrontarla senza stress</h2>
+      <p class="post-excerpt">Marzo è il mese della verifica intermedia. Ecco una guida pratica per preparare la revisione del PEI in modo organizzato, con una checklist da usare subito e qualche consiglio per il GLO di verifica.</p>
+      <span class="read-more">Leggi l'articolo</span>
+    </a>
+  </article>
+
+</div>
+
+<section class="contatti">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <span class="section-tag">Contatti</span>
+    <h2 class="section-title">Hai domande? Parliamone.</h2>
+    <p class="contatti-text">
+      Se vuoi saperne di più, hai un dubbio, o vuoi semplicemente capire se sostenIAmoci fa al caso tuo — scrivimi. Rispondo personalmente a tutti i messaggi.
+    </p>
+
+    <div class="contatti-methods">
+      <a href="#" class="contatti-method" id="emailLink" onclick="return false;">
+        <span class="icon">✉️</span> <span id="emailText">caricamento...</span>
+      </a>
+    </div>
+
+    <p class="contatti-divider">Oppure, se sei già convinto:</p>
+
+    <a href="../index.html#upload" class="btn-primary">✉️ Richiedi un documento</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 sostenIAmoci &mdash; Tutti i diritti riservati &middot; <a href="../privacy.html">Privacy Policy</a> &middot; <a href="../termini.html">Termini di Servizio</a></p>
+</footer>
+
+<script>
+function demail() {
+  var p = ['sosteniamoci', 'ia'];
+  var d = ['gmail', 'com'];
+  return p.join('.') + '@' + d.join('.');
+}
+(function() {
+  var addr = demail();
+  var el = document.getElementById('emailText');
+  var link = document.getElementById('emailLink');
+  if (el) el.textContent = addr;
+  if (link) {
+    link.href = 'mailto:' + addr;
+    link.onclick = null;
+  }
+})();
+</script>
+
+</body>
+</html>

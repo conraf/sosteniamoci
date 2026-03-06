@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisione intermedia del PEI: come affrontarla senza stress — sostenIAmoci</title>
+<meta name="description" content="Guida pratica per insegnanti di sostegno alla revisione intermedia del PEI: checklist, consigli per il GLO di verifica e suggerimenti per documentare i progressi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-cream: #FFF8F0;
+  --soft-peach: #FFECD2;
+  --gentle-coral: #E8927C;
+  --deep-terracotta: #C75C3A;
+  --warm-brown: #5D3A2A;
+  --soft-sage: #A8C5A0;
+  --deep-sage: #6B9B6B;
+  --light-sage: #E8F0E6;
+  --text-primary: #3D2B1F;
+  --text-secondary: #6B5344;
+  --text-light: #8B7565;
+  --white: #FFFFFF;
+  --shadow-soft: 0 2px 20px rgba(93, 58, 42, 0.08);
+  --shadow-medium: 0 4px 30px rgba(93, 58, 42, 0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-primary);
+  background: var(--warm-cream);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', serif;
+  line-height: 1.3;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 24px;
+  background: rgba(255, 248, 240, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+}
+
+.nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Lora', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  text-decoration: none;
+}
+
+.logo span { color: var(--deep-terracotta); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--deep-terracotta); }
+
+.nav-cta {
+  background: var(--deep-terracotta) !important;
+  color: var(--white) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+/* ===== ARTICLE ===== */
+.article-header {
+  padding: 120px 24px 40px;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.article-date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--deep-sage);
+  margin-bottom: 16px;
+}
+
+.article-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--warm-brown);
+  margin-bottom: 20px;
+}
+
+.article-intro {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.article-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.article-body h2 {
+  font-size: 1.4rem;
+  color: var(--warm-brown);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.article-body h3 {
+  font-size: 1.15rem;
+  color: var(--warm-brown);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.article-body p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.article-body ul, .article-body ol {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  padding-left: 24px;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.article-body li {
+  margin-bottom: 8px;
+}
+
+.article-body strong {
+  color: var(--text-primary);
+}
+
+/* Checklist box */
+.checklist-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  margin: 32px 0;
+  border-left: 4px solid var(--deep-sage);
+}
+
+.checklist-box h3 {
+  margin-top: 0;
+  color: var(--deep-sage);
+  margin-bottom: 16px;
+}
+
+.checklist-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist-box li {
+  padding: 6px 0;
+  padding-left: 28px;
+  position: relative;
+}
+
+.checklist-box li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--deep-sage);
+  font-size: 1.1rem;
+}
+
+/* Tip box */
+.tip-box {
+  background: var(--soft-peach);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+
+.tip-box p {
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.tip-box strong {
+  color: var(--deep-terracotta);
+}
+
+/* CTA box */
+.cta-box {
+  background: linear-gradient(135deg, var(--light-sage), var(--soft-peach));
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  margin: 48px 0;
+  text-align: center;
+}
+
+.cta-box h3 {
+  margin-top: 0;
+  color: var(--warm-brown);
+  margin-bottom: 12px;
+}
+
+.cta-box p {
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deep-terracotta);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover {
+  background: var(--warm-brown);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(199, 92, 58, 0.25);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 2px solid var(--soft-peach);
+  color: var(--deep-terracotta);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.back-link:hover { color: var(--warm-brown); }
+
+/* Video embed */
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin: 28px 0;
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== CONTATTI ===== */
+.contatti {
+  background: linear-gradient(170deg, var(--warm-brown) 0%, #4A2D1E 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 100px 24px;
+}
+
+.contatti .section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--soft-sage);
+  margin-bottom: 12px;
+}
+
+.contatti .section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.contatti-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  max-width: 550px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+
+.contatti-methods {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.contatti-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.contatti-method:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.contatti-method span.icon {
+  font-size: 1.3rem;
+}
+
+.contatti .btn-primary {
+  background: var(--gentle-coral);
+  font-size: 1.1rem;
+  padding: 18px 40px;
+}
+
+.contatti .btn-primary:hover {
+  background: var(--deep-terracotta);
+}
+
+.contatti-divider {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 28px 0;
+  font-size: 0.95rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #3A2015;
+  text-align: center;
+  padding: 28px 24px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .article-header { padding: 100px 16px 30px; }
+  .article-body { padding: 30px 16px 60px; }
+  .checklist-box, .tip-box, .cta-box { padding: 20px 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">sosten<span>IA</span>moci</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#servizi">Servizi</a></li>
+      <li><a href="../index.html#come-funziona">Come funziona</a></li>
+      <li><a href="index.html">Blog</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+      <li><a href="../index.html#chi-sono">Chi sono</a></li>
+      <li><a href="../index.html#upload" class="nav-cta">Richiedi un documento</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-date">6 Marzo 2026</div>
+  <h1>Revisione intermedia del PEI: come affrontarla senza stress</h1>
+  <p class="article-intro">Marzo è il mese della verifica intermedia. Se il GLO si avvicina e non sai da dove partire, ecco una guida pratica per organizzarti e arrivare preparato.</p>
+</header>
+
+<article class="article-body">
+
+  <p>La verifica intermedia del PEI è uno dei momenti più importanti dell'anno scolastico per chi fa sostegno. È il punto in cui ci si ferma, si guarda cosa ha funzionato e cosa no, e si decide come aggiustare il tiro per la seconda metà dell'anno.</p>
+
+  <p>Eppure, nonostante la sua importanza, è anche uno dei momenti che genera più ansia. Perché richiede di mettere nero su bianco i progressi (o la mancanza di progressi) dell'alunno, e farlo in un modo che sia onesto, documentato e utile per il GLO.</p>
+
+  <p>La buona notizia è che con un po' di organizzazione si può affrontare tutto con molta meno fatica. Ecco come.</p>
+
+  <h2>1. Parti dalle osservazioni, non dal modulo</h2>
+
+  <p>L'errore più comune è aprire il PEI di inizio anno e cercare di aggiornarlo dimensione per dimensione, dall'alto in basso. Il risultato è che ci si blocca quasi subito, perché le formulazioni originali sembrano lontane da quello che si è osservato in classe.</p>
+
+  <p>Prova al contrario: prendi i tuoi appunti, le osservazioni che hai raccolto durante questi mesi, le annotazioni sul registro, i feedback dei colleghi curricolari. Rileggili con calma. Quello che emerge è il quadro reale, e da lì puoi aggiornare il PEI con coerenza.</p>
+
+  <div class="tip-box">
+    <p><strong>Consiglio pratico:</strong> se non hai osservazioni scritte in modo sistematico, non preoccuparti. Anche appunti sparsi, note sul telefono o ricordi recenti sono un punto di partenza valido. L'importante è raccoglierli prima di sedersi a scrivere.</p>
+  </div>
+
+  <h2>2. Per ogni dimensione, rispondi a tre domande</h2>
+
+  <p>Non serve riscrivere tutto. Per ciascuna delle quattro dimensioni del PEI (socializzazione e interazione, comunicazione e linguaggio, autonomia e orientamento, cognitiva e dell'apprendimento), concentrati su queste tre domande:</p>
+
+  <ol>
+    <li><strong>Cosa è cambiato rispetto a settembre?</strong> Anche piccoli progressi contano. Anche l'assenza di cambiamento è un dato.</li>
+    <li><strong>Gli obiettivi che avevamo fissato erano realistici?</strong> Se un obiettivo si è rivelato troppo ambizioso o troppo facile, è il momento di ricalibrarli.</li>
+    <li><strong>Cosa propongo per il secondo quadrimestre?</strong> Qui si inseriscono le modifiche: nuovi obiettivi, strategie diverse, risorse aggiuntive.</li>
+  </ol>
+
+  <p>Queste tre domande coprono tutto quello che il GLO ha bisogno di sapere nella verifica intermedia.</p>
+
+  <h2>3. Usa la checklist per non dimenticare nulla</h2>
+
+  <p>Prima del GLO di verifica, assicurati di aver coperto tutti i punti. Ecco una checklist da stampare o tenere a portata di mano:</p>
+
+  <div class="checklist-box">
+    <h3>Checklist per la verifica intermedia</h3>
+    <ul>
+      <li>Rileggere il PEI di inizio anno e le osservazioni raccolte</li>
+      <li>Aggiornare la descrizione del funzionamento per ogni dimensione</li>
+      <li>Verificare il raggiungimento degli obiettivi: raggiunti, parzialmente raggiunti, non raggiunti</li>
+      <li>Riformulare o sostituire gli obiettivi non realistici</li>
+      <li>Aggiornare gli interventi educativi e le strategie se necessario</li>
+      <li>Verificare la coerenza tra le ore di sostegno assegnate e il fabbisogno reale</li>
+      <li>Raccogliere il parere dei colleghi curricolari (anche informalmente)</li>
+      <li>Preparare una sintesi dei punti principali da presentare al GLO</li>
+      <li>Predisporre il verbale del GLO di verifica intermedia</li>
+    </ul>
+  </div>
+
+  <h2>4. Scrivi per le persone, non per il modulo</h2>
+
+  <p>Un PEI aggiornato bene non è quello che riempie tutte le caselle. È quello che chi lo legge (il collega che arriverà a settembre, il neuropsichiatra, i genitori) riesce a capire cosa succede davvero in classe con quel bambino.</p>
+
+  <p>Qualche accorgimento pratico:</p>
+
+  <ul>
+    <li><strong>Sii concreto.</strong> Invece di "l'alunno ha migliorato le competenze relazionali", scrivi "Marco ora riesce a partecipare al lavoro di coppia senza l'intervento costante dell'insegnante, cosa che a settembre non avveniva".</li>
+    <li><strong>Non nascondere le difficoltà.</strong> Se un obiettivo non è stato raggiunto, spiegare perché è molto più utile che cercare di mascherarlo. Il GLO serve proprio a questo.</li>
+    <li><strong>Collegati al contesto.</strong> Le variabili esterne (cambio di insegnante, assenze prolungate, modifiche nella terapia) vanno menzionate perché spiegano il quadro.</li>
+  </ul>
+
+  <h2>5. Pensa già al PEI di fine anno</h2>
+
+  <p>La verifica intermedia è anche il momento migliore per cominciare a ragionare sul PEI finale. Non serve scriverlo adesso, ma tenere a mente dove stai andando aiuta a rendere la verifica intermedia più coerente.</p>
+
+  <p>In particolare, chiediti:</p>
+
+  <ul>
+    <li>Quali obiettivi saranno raggiungibili entro giugno?</li>
+    <li>Quali raccomandazioni vorrai inserire per l'anno prossimo?</li>
+    <li>Ci sono elementi da segnalare in vista di un eventuale passaggio di grado?</li>
+  </ul>
+
+  <p>Queste riflessioni ora ti risparmieranno molto lavoro a maggio, quando il tempo stringe davvero.</p>
+
+  <div class="cta-box">
+    <h3>Hai poco tempo per la revisione?</h3>
+    <p>Se vuoi concentrarti sui contenuti educativi e lasciare a qualcun altro la fatica della stesura, posso aiutarti. Mandami i tuoi appunti e ti restituisco il PEI aggiornato entro 48 ore.</p>
+    <a href="../index.html#upload" class="btn-primary">Richiedi un documento</a>
+  </div>
+
+  <a href="index.html" class="back-link">&larr; Torna al blog</a>
+
+</article>
+
+<section class="contatti">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <span class="section-tag">Contatti</span>
+    <h2 class="section-title">Hai domande? Parliamone.</h2>
+    <p class="contatti-text">
+      Se vuoi saperne di più, hai un dubbio, o vuoi semplicemente capire se sostenIAmoci fa al caso tuo — scrivimi. Rispondo personalmente a tutti i messaggi.
+    </p>
+
+    <div class="contatti-methods">
+      <a href="#" class="contatti-method" id="emailLink" onclick="return false;">
+        <span class="icon">✉️</span> <span id="emailText">caricamento...</span>
+      </a>
+    </div>
+
+    <p class="contatti-divider">Oppure, se sei già convinto:</p>
+
+    <a href="../index.html#upload" class="btn-primary">✉️ Richiedi un documento</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 sostenIAmoci &mdash; Tutti i diritti riservati &middot; <a href="../privacy.html">Privacy Policy</a> &middot; <a href="../termini.html">Termini di Servizio</a></p>
+</footer>
+
+<script>
+function demail() {
+  var p = ['sosteniamoci', 'ia'];
+  var d = ['gmail', 'com'];
+  return p.join('.') + '@' + d.join('.');
+}
+(function() {
+  var addr = demail();
+  var el = document.getElementById('emailText');
+  var link = document.getElementById('emailLink');
+  if (el) el.textContent = addr;
+  if (link) {
+    link.href = 'mailto:' + addr;
+    link.onclick = null;
+  }
+})();
+</script>
+
+</body>
+</html>
