@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diario di bordo — Variante 2: Per obiettivo PEI — sostenIAmoci</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-cream: #FFF8F0;
+  --deep-terracotta: #C75C3A;
+  --warm-brown: #5D3A2A;
+  --soft-sage: #A8C5A0;
+  --light-sage: #E8F0E6;
+  --soft-peach: #FFECD2;
+  --text-primary: #3D2B1F;
+  --text-secondary: #6B5344;
+  --text-light: #8B7565;
+  --border: #D4C4B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-primary);
+  background: var(--warm-cream);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.screen-header {
+  background: var(--warm-brown);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.screen-header .logo {
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.screen-header .logo span { color: #E8927C; }
+
+.screen-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.screen-header p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.btn-print {
+  background: #E8927C;
+  color: white;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-print:hover { background: #C75C3A; }
+
+.document {
+  max-width: 800px;
+  margin: 32px auto;
+  background: white;
+  border-radius: 12px;
+  padding: 48px 56px;
+  box-shadow: 0 4px 30px rgba(93,58,42,0.10);
+}
+
+.doc-header {
+  border-bottom: 2px solid var(--warm-brown);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.doc-title-block h1 {
+  font-family: 'Lora', serif;
+  font-size: 1.35rem;
+  color: var(--warm-brown);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.doc-title-block .variante {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--deep-terracotta);
+}
+
+.doc-logo {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-align: right;
+}
+
+.doc-logo span { color: var(--deep-terracotta); }
+
+.dati-box {
+  background: var(--light-sage);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.dati-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dati-field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+}
+
+.dati-field .line {
+  border-bottom: 1.5px solid #9CB890;
+  height: 26px;
+}
+
+.istruzioni {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+/* ===== OBIETTIVO BLOCK ===== */
+.obiettivo-block {
+  border: 2px solid var(--warm-brown);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.obiettivo-header {
+  background: var(--soft-peach);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.obiettivo-header label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.obiettivo-header .line {
+  border-bottom: 1.5px solid var(--border);
+  height: 26px;
+  width: 100%;
+}
+
+.obiettivo-meta {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 32px;
+}
+
+.obiettivo-meta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.obiettivo-meta-field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+}
+
+.obiettivo-meta-field .line {
+  border-bottom: 1px solid var(--border);
+  height: 22px;
+}
+
+/* ===== OBSERVATION ROWS ===== */
+.obs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.obs-table thead tr {
+  background: #F5F0EB;
+}
+
+.obs-table thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.obs-table tbody td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.obs-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.obs-table .col-data { width: 80px; }
+.obs-table .col-attivita { width: 150px; }
+.obs-table .col-osservazione { }
+.obs-table .col-esito { width: 120px; text-align: center; }
+
+.cell-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cell-lines .line {
+  border-bottom: 1px solid var(--border);
+  height: 18px;
+}
+
+.esito-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.esito-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+}
+
+.esito-options .circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ===== DOC FOOTER ===== */
+.doc-footer {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+.screen-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.screen-footer a {
+  color: var(--deep-terracotta);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* ===== PRINT ===== */
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 20mm;
+  }
+
+  body { background: white; font-size: 10.5pt; }
+
+  .screen-header, .screen-footer { display: none !important; }
+
+  .document {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .dati-box {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .obiettivo-header {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .obs-table thead tr {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .obiettivo-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="screen-header">
+  <a href="index.html" class="logo">sosten<span>IA</span>moci</a>
+  <div class="screen-header-right">
+    <p>Usa Ctrl+P (Mac: Cmd+P) per stampare o salvare come PDF</p>
+    <button class="btn-print" onclick="window.print()">&#128438; Stampa / Salva PDF</button>
+  </div>
+</div>
+
+<div class="document">
+
+  <div class="doc-header">
+    <div class="doc-title-block">
+      <div class="variante">Variante 2 — Per obiettivo PEI</div>
+      <h1>Diario di bordo dell'insegnante di sostegno</h1>
+    </div>
+    <div class="doc-logo">sosten<span>IA</span>moci</div>
+  </div>
+
+  <div class="dati-box">
+    <div class="dati-field">
+      <label>Nome e cognome dell'alunno/a</label>
+      <div class="line"></div>
+    </div>
+    <div class="dati-field">
+      <label>Classe</label>
+      <div class="line"></div>
+    </div>
+    <div class="dati-field">
+      <label>Insegnante di sostegno</label>
+      <div class="line"></div>
+    </div>
+    <div class="dati-field">
+      <label>Anno scolastico</label>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <p class="istruzioni">Dedica un foglio a ciascun obiettivo del PEI. Registra le osservazioni nel tempo e indica per ogni sessione se l'alunno/a sta avanzando verso l'obiettivo, si mantiene stabile, o incontra difficoltà.</p>
+
+  <!-- OBIETTIVO 1 -->
+  <div class="obiettivo-block">
+    <div class="obiettivo-header">
+      <label>Obiettivo PEI (descrizione)</label>
+      <div class="line"></div>
+    </div>
+    <div class="obiettivo-meta">
+      <div class="obiettivo-meta-field">
+        <label>Area / Dimensione PEI</label>
+        <div class="line"></div>
+      </div>
+      <div class="obiettivo-meta-field">
+        <label>Periodo di riferimento</label>
+        <div class="line"></div>
+      </div>
+    </div>
+    <table class="obs-table">
+      <thead>
+        <tr>
+          <th class="col-data">Data</th>
+          <th class="col-attivita">Attività</th>
+          <th class="col-osservazione">Cosa ho osservato</th>
+          <th class="col-esito">Verso l'obiettivo?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- OBIETTIVO 2 -->
+  <div class="obiettivo-block">
+    <div class="obiettivo-header">
+      <label>Obiettivo PEI (descrizione)</label>
+      <div class="line"></div>
+    </div>
+    <div class="obiettivo-meta">
+      <div class="obiettivo-meta-field">
+        <label>Area / Dimensione PEI</label>
+        <div class="line"></div>
+      </div>
+      <div class="obiettivo-meta-field">
+        <label>Periodo di riferimento</label>
+        <div class="line"></div>
+      </div>
+    </div>
+    <table class="obs-table">
+      <thead>
+        <tr>
+          <th class="col-data">Data</th>
+          <th class="col-attivita">Attività</th>
+          <th class="col-osservazione">Cosa ho osservato</th>
+          <th class="col-esito">Verso l'obiettivo?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><div class="cell-lines"><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div></div></td>
+          <td><div class="cell-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div></td>
+          <td>
+            <div class="esito-options">
+              <label><span class="circle"></span> Avanzato</label>
+              <label><span class="circle"></span> Stabile</label>
+              <label><span class="circle"></span> Difficoltà</label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="doc-footer">
+    <span>Stampato da sostenIAmoci.ia &mdash; per uso personale dell'insegnante</span>
+    <span>Variante 2 / 3</span>
+  </div>
+
+</div>
+
+<div class="screen-footer">
+  <p>Torna all'articolo: <a href="diario-di-bordo-sostegno.html">Il diario di bordo per l'insegnante di sostegno</a> &nbsp;&middot;&nbsp; <a href="index.html">Blog</a></p>
+</div>
+
+</body>
+</html>

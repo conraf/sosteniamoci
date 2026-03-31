@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il diario di bordo per l'insegnante di sostegno: tre modelli pronti da usare — sostenIAmoci</title>
+<meta name="description" content="Tre varianti di diario di bordo per insegnanti di sostegno: dal formato rapido quotidiano alla scheda per obiettivo PEI. Con template da stampare o salvare come PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-cream: #FFF8F0;
+  --soft-peach: #FFECD2;
+  --gentle-coral: #E8927C;
+  --deep-terracotta: #C75C3A;
+  --warm-brown: #5D3A2A;
+  --soft-sage: #A8C5A0;
+  --deep-sage: #6B9B6B;
+  --light-sage: #E8F0E6;
+  --text-primary: #3D2B1F;
+  --text-secondary: #6B5344;
+  --text-light: #8B7565;
+  --white: #FFFFFF;
+  --shadow-soft: 0 2px 20px rgba(93, 58, 42, 0.08);
+  --shadow-medium: 0 4px 30px rgba(93, 58, 42, 0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-primary);
+  background: var(--warm-cream);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', serif;
+  line-height: 1.3;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(93, 58, 42, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+nav.scrolled {
+  box-shadow: var(--shadow-soft);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--deep-terracotta);
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--deep-terracotta);
+}
+
+.nav-cta {
+  background: var(--deep-terracotta) !important;
+  color: var(--white) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--warm-brown) !important;
+  transform: translateY(-1px);
+}
+
+/* ===== ARTICLE ===== */
+.article-header {
+  padding: 120px 24px 40px;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.article-date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--deep-sage);
+  margin-bottom: 16px;
+}
+
+.article-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--warm-brown);
+  margin-bottom: 20px;
+}
+
+.article-intro {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.article-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.article-body h2 {
+  font-size: 1.4rem;
+  color: var(--warm-brown);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.article-body h3 {
+  font-size: 1.15rem;
+  color: var(--warm-brown);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.article-body p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.article-body ul, .article-body ol {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  padding-left: 24px;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.article-body li {
+  margin-bottom: 8px;
+}
+
+.article-body strong {
+  color: var(--text-primary);
+}
+
+/* Tip box */
+.tip-box {
+  background: var(--soft-peach);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+
+.tip-box p {
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.tip-box strong {
+  color: var(--deep-terracotta);
+}
+
+/* CTA box */
+.cta-box {
+  background: linear-gradient(135deg, var(--light-sage), var(--soft-peach));
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  margin: 48px 0;
+  text-align: center;
+}
+
+.cta-box h3 {
+  margin-top: 0;
+  color: var(--warm-brown);
+  margin-bottom: 12px;
+}
+
+.cta-box p {
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deep-terracotta);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover {
+  background: var(--warm-brown);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(199, 92, 58, 0.25);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 2px solid var(--soft-peach);
+  color: var(--deep-terracotta);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.back-link:hover { color: var(--warm-brown); }
+
+/* Template card */
+.template-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin: 28px 0 16px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(93, 58, 42, 0.08);
+}
+
+.template-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+.template-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.template-card th {
+  background: var(--light-sage);
+  color: var(--warm-brown);
+  font-weight: 700;
+  padding: 8px 12px;
+  text-align: left;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+}
+
+.template-card td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #f0e8e0;
+  color: var(--text-light);
+  font-size: 0.84rem;
+  font-style: italic;
+}
+
+.template-card .field-block {
+  margin-bottom: 14px;
+}
+
+.template-card .field-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.template-card .field-value {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  font-style: italic;
+  padding: 6px 0;
+  border-bottom: 1px solid #e8ddd5;
+}
+
+.template-card .field-value.multi {
+  min-height: 48px;
+  display: block;
+  padding: 8px 0;
+}
+
+.template-card .pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.template-card .pill {
+  font-size: 0.78rem;
+  border: 1px solid var(--soft-sage);
+  border-radius: 20px;
+  padding: 2px 10px;
+  color: var(--text-secondary);
+}
+
+.template-card .pill.active {
+  background: var(--soft-sage);
+  color: var(--warm-brown);
+  font-weight: 700;
+}
+
+/* Download area */
+.download-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  margin-bottom: 32px;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deep-sage);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-download:hover {
+  background: var(--deep-terracotta);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(107, 155, 107, 0.3);
+}
+
+.download-hint {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+/* Variante badge */
+.variante-badge {
+  display: inline-block;
+  background: var(--deep-sage);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+/* ===== CONTATTI ===== */
+.contatti {
+  background: linear-gradient(170deg, var(--warm-brown) 0%, #4A2D1E 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 100px 24px;
+}
+
+.contatti .section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--soft-sage);
+  margin-bottom: 12px;
+}
+
+.contatti .section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.contatti-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  max-width: 550px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+
+.contatti-methods {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.contatti-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.contatti-method:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.contatti-method span.icon {
+  font-size: 1.3rem;
+}
+
+.contatti .btn-primary {
+  background: var(--gentle-coral);
+  font-size: 1.1rem;
+  padding: 18px 40px;
+}
+
+.contatti .btn-primary:hover {
+  background: var(--deep-terracotta);
+}
+
+.contatti-divider {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 28px 0;
+  font-size: 0.95rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #3A2015;
+  text-align: center;
+  padding: 28px 24px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+
+/* ===== MOBILE TOGGLE ===== */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--warm-brown);
+  margin: 6px 0;
+  border-radius: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--warm-cream);
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 16px;
+    box-shadow: var(--shadow-soft);
+  }
+  .nav-links.open { display: flex; }
+  .mobile-toggle { display: block; }
+  .article-header { padding: 100px 16px 30px; }
+  .article-body { padding: 30px 16px 60px; }
+  .tip-box, .cta-box { padding: 20px 16px; }
+  .template-card { padding: 20px 16px; }
+  .template-card table { font-size: 0.78rem; }
+  .template-card th, .template-card td { padding: 6px 8px; }
+  .download-area { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">sosten<span>IA</span>moci</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#servizi">Servizi</a></li>
+      <li><a href="../index.html#come-funziona">Come funziona</a></li>
+      <li><a href="index.html">Blog</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+      <li><a href="../index.html#chi-sono">Chi sono</a></li>
+      <li><a href="../index.html#upload" class="nav-cta">Richiedi un documento</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="article-header">
+  <div class="article-date">30 Marzo 2026</div>
+  <h1>Il diario di bordo per l'insegnante di sostegno: tre modelli pronti da usare</h1>
+  <p class="article-intro">Scrivere relazioni e verifiche del PEI è molto più semplice quando non parti da un foglio bianco. Ecco tre formati diversi di diario di bordo, dal più rapido al più strutturato, con i template pronti da scaricare.</p>
+</header>
+
+<article class="article-body">
+
+  <p>Fine quadrimestre. Hai il PEI aperto davanti, devi aggiornare le sezioni sugli obiettivi e scrivere la relazione per il GLO. Ti siedi e cerchi di ricordare cosa è successo negli ultimi tre mesi.</p>
+
+  <p>Se hai un diario di bordo, questo momento dura venti minuti. Se non ce l'hai, può diventare una serata lunga — piena di quella sensazione scomoda di non avere abbastanza in mano per scrivere qualcosa di onesto e utile.</p>
+
+  <p>Il diario di bordo non è un altro documento da tenere. È il documento che ti evita fatica su tutti gli altri. Non serve essere precisi o sistematici ogni singolo giorno. Serve solo avere un posto dove lasciare le osservazioni mentre sono ancora fresche.</p>
+
+  <div class="tip-box">
+    <p><strong>La regola che vale per tutti e tre i formati:</strong> scrivi lo stesso giorno, o al massimo la mattina dopo. I dettagli concreti — quello che ha detto, quante volte si è alzato, come ha reagito all'errore — svaniscono in fretta. I ricordi generici non servono a nessuno, né a te né al GLO.</p>
+  </div>
+
+  <h2>Variante 1 — Cronologico minimo</h2>
+
+  <div class="variante-badge">Per chi ha poco tempo</div>
+
+  <p>Una riga per sessione, ogni giorno. Niente di più. L'obiettivo è creare un'abitudine leggera che si mantiene anche nelle settimane difficili. Due minuti a fine mattina, e hai documentato.</p>
+
+  <p>Funziona bene come punto di partenza per chi non ha mai tenuto un diario sistematico, e come strumento quotidiano anche per chi usa le altre varianti nelle sessioni più rilevanti.</p>
+
+  <div class="template-card">
+    <div class="template-label">Anteprima — Cronologico minimo</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:12%">Data</th>
+          <th style="width:26%">Attività / Setting</th>
+          <th style="width:40%">Osservazione</th>
+          <th style="width:22%">Nota / follow-up</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>14/03</td>
+          <td>Lettura in coppia — aula</td>
+          <td>Ha chiesto aiuto al compagno 2 volte senza attendere l'adulto</td>
+          <td>Prima volta da ottobre. Osservare se si ripete</td>
+        </tr>
+        <tr>
+          <td>15/03</td>
+          <td>Problem solving — aula</td>
+          <td>Ha abbandonato il foglio dopo 8 min. Ha detto "non ce la faccio"</td>
+          <td>Attività troppo complessa? Ridurre</td>
+        </tr>
+        <tr>
+          <td>18/03</td>
+          <td>Mensa</td>
+          <td>Ha mangiato in autonomia per tutto il pasto, senza sollecitazioni</td>
+          <td>Generalizzazione in contesto nuovo — annotare in Sez. 4</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="download-area">
+    <a class="btn-download" href="diario-bordo-template-1.html" target="_blank">&#8595; Apri il template</a>
+    <span class="download-hint">Si apre in una nuova scheda &mdash; usa Ctrl+P (o Cmd+P) per salvarlo come PDF o stamparlo</span>
+  </div>
+
+  <h2>Variante 2 — Per obiettivo</h2>
+
+  <div class="variante-badge">Per il periodo prima della verifica PEI</div>
+
+  <p>Invece di organizzare le osservazioni per data, le organizzi per obiettivo del PEI. Una scheda per ciascun obiettivo su cui stai lavorando: tutte le osservazioni relative a quell'obiettivo finiscono lì, in ordine cronologico.</p>
+
+  <p>Quando arriva il GLO di verifica, hai già il quadro dell'andamento per ogni obiettivo. Scrivere la sezione di verifica diventa quasi automatico.</p>
+
+  <div class="template-card">
+    <div class="template-label">Anteprima — Per obiettivo</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:14px;">
+      <div class="field-block">
+        <div class="field-label">Alunno/a</div>
+        <div class="field-value">M. R.</div>
+      </div>
+      <div class="field-block">
+        <div class="field-label">Anno scolastico</div>
+        <div class="field-value">2025/2026</div>
+      </div>
+      <div class="field-block">
+        <div class="field-label">Periodo</div>
+        <div class="field-value">Gen — Mar 2026</div>
+      </div>
+    </div>
+    <div class="field-block" style="margin-bottom:10px;">
+      <div class="field-label">Obiettivo (dalla Sez. 5 del PEI)</div>
+      <div class="field-value">Con supporto visivo, ordinare i numeri fino a 20 in sequenza crescente</div>
+    </div>
+    <div class="field-block" style="margin-bottom:14px;">
+      <div class="field-label">Dimensione PEI</div>
+      <div class="pills">
+        <span class="pill">A — Relazione</span>
+        <span class="pill">B — Comunicazione</span>
+        <span class="pill">C — Autonomia</span>
+        <span class="pill active">D — Cognitiva</span>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:12%">Data</th>
+          <th style="width:28%">Contesto / Attività</th>
+          <th style="width:32%">Osservazione</th>
+          <th style="width:28%">Livello di supporto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10/03</td>
+          <td>Scheda individuale — matematica</td>
+          <td>Ordinato 1-10 con linea del numero</td>
+          <td>Con guida verbale</td>
+        </tr>
+        <tr>
+          <td>13/03</td>
+          <td>Gioco a coppie</td>
+          <td>1-15 senza supporto, bloccato su 16-20</td>
+          <td>Autonomo (parziale)</td>
+        </tr>
+        <tr>
+          <td>17/03</td>
+          <td>Scheda individuale</td>
+          <td>1-20 in autonomia in circa 4 minuti</td>
+          <td>Autonomo</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;">
+      <div class="field-label" style="margin-bottom:6px;">Tendenza osservata</div>
+      <div class="pills">
+        <span class="pill">In acquisizione</span>
+        <span class="pill active">Acquisito in situazioni note</span>
+        <span class="pill">Generalizzato</span>
+        <span class="pill">Non avviato</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="download-area">
+    <a class="btn-download" href="diario-bordo-template-2.html" target="_blank">&#8595; Apri il template</a>
+    <span class="download-hint">Si apre in una nuova scheda &mdash; usa Ctrl+P (o Cmd+P) per salvarlo come PDF o stamparlo</span>
+  </div>
+
+  <h2>Variante 3 — Strutturata con prompt</h2>
+
+  <div class="variante-badge">Per le sessioni più significative</div>
+
+  <p>Non serve usarla ogni giorno. Serve per le sessioni in cui è successo qualcosa di rilevante: un comportamento insolito, una strategia che ha funzionato in modo inaspettato, una difficoltà ricorrente che vuoi capire meglio.</p>
+
+  <p>È il formato più utile prima di un incontro con la famiglia o con gli specialisti. Le osservazioni strutturate con domande e ipotesi esplicite producono conversazioni molto più concrete di una descrizione generica.</p>
+
+  <div class="template-card">
+    <div class="template-label">Anteprima — Strutturata con prompt</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:10px; margin-bottom:14px;">
+      <div class="field-block">
+        <div class="field-label">Data</div>
+        <div class="field-value">20/03</div>
+      </div>
+      <div class="field-block">
+        <div class="field-label">Ora</div>
+        <div class="field-value">10:15&nbsp;—&nbsp;10:45</div>
+      </div>
+      <div class="field-block">
+        <div class="field-label">Setting</div>
+        <div class="field-value">Piccolo gruppo</div>
+      </div>
+      <div class="field-block">
+        <div class="field-label">Attività</div>
+        <div class="field-value">Lettura e comprensione</div>
+      </div>
+    </div>
+    <div class="field-block">
+      <div class="field-label">Fatti osservati</div>
+      <div class="field-value multi">Ha letto 2 righe con supporto. All'errore si è bloccato: "sbaglio sempre". Dopo 2 min di pausa spontanea ha ripreso e completato il paragrafo. Ha risposto correttamente a 2 domande su 3 poste oralmente.</div>
+    </div>
+    <div class="field-block">
+      <div class="field-label">Cosa ha funzionato</div>
+      <div class="field-value multi">La pausa non gestita dall'adulto. La domanda orale invece di scritta.</div>
+    </div>
+    <div class="field-block">
+      <div class="field-label">Cosa non ha funzionato</div>
+      <div class="field-value multi">La lettura ad alta voce davanti ai compagni genera blocco immediato all'errore.</div>
+    </div>
+    <div class="field-block">
+      <div class="field-label">Ipotesi / domande</div>
+      <div class="field-value multi">Il "sbaglio sempre" suggerisce un pattern consolidato, non solo timidezza situazionale. Chiedere alla logopedista se il blocco è fonologico o emotivo.</div>
+    </div>
+    <div class="field-block">
+      <div class="field-label">Prossimo passo</div>
+      <div class="field-value">Provare lettura in coppia (lui + compagno di fiducia). Portare l'osservazione della pausa spontanea al prossimo GLO.</div>
+    </div>
+  </div>
+
+  <div class="download-area">
+    <a class="btn-download" href="diario-bordo-template-3.html" target="_blank">&#8595; Apri il template</a>
+    <span class="download-hint">Si apre in una nuova scheda &mdash; usa Ctrl+P (o Cmd+P) per salvarlo come PDF o stamparlo</span>
+  </div>
+
+  <h2>Quale scegliere?</h2>
+
+  <p>La risposta breve è: quella che userai davvero. Non quella che sembra più completa.</p>
+
+  <p>Un buon punto di partenza è la variante cronologica — due righe al giorno, tutti i giorni. Poi, nelle settimane prima della verifica intermedia o finale, si aggiunge la variante per obiettivo per organizzare quello che si è raccolto. La variante strutturata si usa quando succede qualcosa che vale la pena capire in profondità.</p>
+
+  <p>Le tre varianti non si escludono: si completano.</p>
+
+  <div class="cta-box">
+    <h3>Hai già le osservazioni, ma manca il tempo per scrivere?</h3>
+    <p>Mandami i tuoi appunti e ti restituisco la relazione, la verifica del PEI o il verbale GLO già pronti entro 48 ore.</p>
+    <a href="../index.html#upload" class="btn-primary">Richiedi un documento</a>
+  </div>
+
+  <a href="index.html" class="back-link">&larr; Torna al blog</a>
+
+</article>
+
+<section class="contatti">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <span class="section-tag">Contatti</span>
+    <h2 class="section-title">Hai domande? Parliamone.</h2>
+    <p class="contatti-text">
+      Se vuoi saperne di più, hai un dubbio, o vuoi semplicemente capire se sostenIAmoci fa al caso tuo — scrivimi. Rispondo personalmente a tutti i messaggi.
+    </p>
+
+    <div class="contatti-methods">
+      <a href="#" class="contatti-method" id="emailLink" onclick="return false;">
+        <span class="icon">✉️</span> <span id="emailText">caricamento...</span>
+      </a>
+    </div>
+
+    <p class="contatti-divider">Oppure, partiamo:</p>
+
+    <a href="../index.html#upload" class="btn-primary">✉️ Richiedi un documento</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 sostenIAmoci &mdash; Tutti i diritti riservati &middot; <a href="../privacy.html">Privacy Policy</a> &middot; <a href="../termini.html">Termini di Servizio</a></p>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('navbar');
+  if (window.scrollY > 20) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+document.getElementById('mobileToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+function demail() {
+  var p = ['sosteniamoci', 'ia'];
+  var d = ['gmail', 'com'];
+  return p.join('.') + '@' + d.join('.');
+}
+(function() {
+  var addr = demail();
+  var el = document.getElementById('emailText');
+  var link = document.getElementById('emailLink');
+  if (el) el.textContent = addr;
+  if (link) {
+    link.href = 'mailto:' + addr;
+    link.onclick = null;
+  }
+})();
+</script>
+
+</body>
+</html>

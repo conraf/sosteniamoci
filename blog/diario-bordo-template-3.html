@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diario di bordo — Variante 3: Strutturata con prompt — sostenIAmoci</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-cream: #FFF8F0;
+  --deep-terracotta: #C75C3A;
+  --warm-brown: #5D3A2A;
+  --soft-sage: #A8C5A0;
+  --light-sage: #E8F0E6;
+  --soft-peach: #FFECD2;
+  --gentle-coral: #E8927C;
+  --text-primary: #3D2B1F;
+  --text-secondary: #6B5344;
+  --text-light: #8B7565;
+  --border: #D4C4B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-primary);
+  background: var(--warm-cream);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.screen-header {
+  background: var(--warm-brown);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.screen-header .logo {
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.screen-header .logo span { color: #E8927C; }
+
+.screen-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.screen-header p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.btn-print {
+  background: #E8927C;
+  color: white;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-print:hover { background: #C75C3A; }
+
+.document {
+  max-width: 800px;
+  margin: 32px auto;
+  background: white;
+  border-radius: 12px;
+  padding: 48px 56px;
+  box-shadow: 0 4px 30px rgba(93,58,42,0.10);
+}
+
+.doc-header {
+  border-bottom: 2px solid var(--warm-brown);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.doc-title-block h1 {
+  font-family: 'Lora', serif;
+  font-size: 1.35rem;
+  color: var(--warm-brown);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.doc-title-block .variante {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--deep-terracotta);
+}
+
+.doc-logo {
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-align: right;
+}
+
+.doc-logo span { color: var(--deep-terracotta); }
+
+.dati-box {
+  background: var(--light-sage);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.dati-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dati-field label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+}
+
+.dati-field .line {
+  border-bottom: 1.5px solid #9CB890;
+  height: 26px;
+}
+
+.istruzioni {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+/* ===== ENTRY ===== */
+.entry {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.entry-head {
+  background: var(--soft-peach);
+  padding: 12px 18px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry-head-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.entry-head-field label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.entry-head-field .line {
+  border-bottom: 1px solid #C4A898;
+  height: 20px;
+}
+
+/* ===== PROMPT ROWS ===== */
+.prompt-row {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.prompt-row:last-child {
+  border-bottom: none;
+}
+
+.prompt-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.prompt-number {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gentle-coral);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.prompt-label strong {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+  line-height: 1.4;
+}
+
+.prompt-label em {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.prompt-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 32px;
+}
+
+.prompt-lines .line {
+  border-bottom: 1px solid var(--border);
+  height: 20px;
+}
+
+/* ===== NOTA SEPARAZIONE ===== */
+.nota-fatti {
+  background: #FFF3EC;
+  border-left: 3px solid var(--gentle-coral);
+  padding: 10px 14px;
+  margin: 14px 0 0 32px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+}
+
+/* ===== DOC FOOTER ===== */
+.doc-footer {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+.screen-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+.screen-footer a {
+  color: var(--deep-terracotta);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* ===== PRINT ===== */
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 20mm;
+  }
+
+  body { background: white; font-size: 10pt; }
+
+  .screen-header, .screen-footer { display: none !important; }
+
+  .document {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .dati-box {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .entry-head {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .prompt-number {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .nota-fatti {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="screen-header">
+  <a href="index.html" class="logo">sosten<span>IA</span>moci</a>
+  <div class="screen-header-right">
+    <p>Usa Ctrl+P (Mac: Cmd+P) per stampare o salvare come PDF</p>
+    <button class="btn-print" onclick="window.print()">&#128438; Stampa / Salva PDF</button>
+  </div>
+</div>
+
+<div class="document">
+
+  <div class="doc-header">
+    <div class="doc-title-block">
+      <div class="variante">Variante 3 — Strutturata con prompt</div>
+      <h1>Diario di bordo dell'insegnante di sostegno</h1>
+    </div>
+    <div class="doc-logo">sosten<span>IA</span>moci</div>
+  </div>
+
+  <div class="dati-box">
+    <div class="dati-field">
+      <label>Nome e cognome dell'alunno/a</label>
+      <div class="line"></div>
+    </div>
+    <div class="dati-field">
+      <label>Classe</label>
+      <div class="line"></div>
+    </div>
+    <div class="dati-field">
+      <label>Insegnante di sostegno</label>
+      <div class="line"></div>
+    </div>
+    <div class="dati-field">
+      <label>Anno scolastico</label>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <p class="istruzioni">Compila ogni sezione con annotazioni brevi e concrete. I prompt guidano l'osservazione verso i comportamenti rilevanti per la verifica del PEI. Le sezioni 1-4 riguardano fatti osservati; la sezione 5 le tue interpretazioni (tienile separate).</p>
+
+  <!-- ENTRY 1 -->
+  <div class="entry">
+    <div class="entry-head">
+      <div class="entry-head-field">
+        <label>Data</label>
+        <div class="line"></div>
+      </div>
+      <div class="entry-head-field">
+        <label>Ora / Setting</label>
+        <div class="line"></div>
+      </div>
+      <div class="entry-head-field" style="flex: 2;">
+        <label>Attività in corso</label>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">1</span>
+        <div>
+          <strong>L'alunno/a ha fatto o detto</strong>
+          <em>Comportamento osservato — usa verbi concreti: ha preso, ha detto, si è alzato, ha evitato&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">2</span>
+        <div>
+          <strong>Ha risposto a richieste o stimoli in questo modo</strong>
+          <em>Com'è andata con consegne, richiami, cambi di attività, interazioni con i pari&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">3</span>
+        <div>
+          <strong>Momento che voglio ricordare</strong>
+          <em>Un episodio positivo, una difficoltà significativa, qualcosa di insolito&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">4</span>
+        <div>
+          <strong>Cosa osservare o provare la prossima volta</strong>
+          <em>Un'ipotesi da verificare, una strategia da testare, una domanda aperta&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">5</span>
+        <div>
+          <strong>Cosa penso / come mi sono sentita/o</strong>
+          <em>Riflessione personale, ipotesi interpretative — tienile separate dai fatti sopra</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+      <div class="nota-fatti">Questa sezione contiene interpretazioni, non fatti. Non usarla in comunicazioni formali (PEI, verbale GLO, relazione per specialisti) senza distinguerla chiaramente.</div>
+    </div>
+  </div>
+
+  <!-- ENTRY 2 -->
+  <div class="entry">
+    <div class="entry-head">
+      <div class="entry-head-field">
+        <label>Data</label>
+        <div class="line"></div>
+      </div>
+      <div class="entry-head-field">
+        <label>Ora / Setting</label>
+        <div class="line"></div>
+      </div>
+      <div class="entry-head-field" style="flex: 2;">
+        <label>Attività in corso</label>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">1</span>
+        <div>
+          <strong>L'alunno/a ha fatto o detto</strong>
+          <em>Comportamento osservato — usa verbi concreti: ha preso, ha detto, si è alzato, ha evitato&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">2</span>
+        <div>
+          <strong>Ha risposto a richieste o stimoli in questo modo</strong>
+          <em>Com'è andata con consegne, richiami, cambi di attività, interazioni con i pari&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">3</span>
+        <div>
+          <strong>Momento che voglio ricordare</strong>
+          <em>Un episodio positivo, una difficoltà significativa, qualcosa di insolito&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">4</span>
+        <div>
+          <strong>Cosa osservare o provare la prossima volta</strong>
+          <em>Un'ipotesi da verificare, una strategia da testare, una domanda aperta&#8230;</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+
+    <div class="prompt-row">
+      <div class="prompt-label">
+        <span class="prompt-number">5</span>
+        <div>
+          <strong>Cosa penso / come mi sono sentita/o</strong>
+          <em>Riflessione personale, ipotesi interpretative — tienile separate dai fatti sopra</em>
+        </div>
+      </div>
+      <div class="prompt-lines">
+        <div class="line"></div><div class="line"></div>
+      </div>
+      <div class="nota-fatti">Questa sezione contiene interpretazioni, non fatti. Non usarla in comunicazioni formali (PEI, verbale GLO, relazione per specialisti) senza distinguerla chiaramente.</div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>Stampato da sostenIAmoci.ia &mdash; per uso personale dell'insegnante</span>
+    <span>Variante 3 / 3</span>
+  </div>
+
+</div>
+
+<div class="screen-footer">
+  <p>Torna all'articolo: <a href="diario-di-bordo-sostegno.html">Il diario di bordo per l'insegnante di sostegno</a> &nbsp;&middot;&nbsp; <a href="index.html">Blog</a></p>
+</div>
+
+</body>
+</html>
